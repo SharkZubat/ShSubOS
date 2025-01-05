@@ -1,4 +1,8 @@
-# ShSubOS
+<p align="center">
+  <img src="icossos.png" alt="Icon" width="120" height="120" style="padding: 0;">
+</p>
+<h1 align="center">ShSubOS</h1>
+
 ShSubOS is the Python OS
 
 **Note: This project is currently under development.**
@@ -22,5 +26,3 @@ The shell supports a variety of commands for file management, process control, a
 
 ## Emulation
 ShSubOS includes emulation capabilities to run software designed for different hardware architectures. This feature is crucial for testing and compatibility purposes, allowing developers to ensure their applications work across various environments.
-
----
