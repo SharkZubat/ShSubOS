@@ -1,18 +1,18 @@
 import shutil
 import sys
 
-def cp(source, destination):
+def mv(source, destination):
     try:
-        shutil.copy(source, destination)
-        print(f"Copied {source} to {destination}")
+        shutil.move(source, destination)
+        print(f"Moved {source} to {destination}")
     except FileNotFoundError:
         print(f"File {source} not found")
 
 def main(args):
     if len(args) > 1:
-        cp(args[0], args[1])
+        mv(args[0], args[1])
     else:
-        print("Usage: cp <source> <destination>")
+        print("Usage: mv <source> <destination>")
 
 if __name__ == "__main__":
     main(sys.argv[1:])
