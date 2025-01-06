@@ -1,9 +1,10 @@
 # bin/echo.py
-# This script will handle the 'echo' command.
-
 def echo(args):
     print(" ".join(args))
 
+def main(args):
+    echo(args)
+
 if __name__ == "__main__":
     import sys
-    echo(sys.argv[1:])
+    main(sys.argv[1:])
