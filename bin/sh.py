@@ -1,4 +1,5 @@
 import bin.registry
+import readline
 
 def start_shell():
     print("Welcome to ShSubOS Shell!")

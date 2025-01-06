@@ -3,7 +3,7 @@ import importlib
 
 def load_commands():
     commands = {}
-    bin_path = os.path.join(os.path.dirname(__file__), 'bin')
+    bin_path = os.path.dirname(__file__)
     for file in os.listdir(bin_path):
         if file.endswith('.py') and file != 'registry.py':
             command_name = file[:-3]

@@ -1,4 +1,7 @@
+import os
+
 def boot_shsub_os():
+    os.system('clear' if os.name == 'posix' else 'cls')
     print("Booting ShSubOS...")
     try:
         with open("boot/bootmode", "r") as f:
