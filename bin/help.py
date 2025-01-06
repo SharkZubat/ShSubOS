@@ -1,6 +1,15 @@
+import os
 import sys
 
 def help():
-  #commands  here
+    bin_path = os.path.dirname(os.path.realpath(__file__))
+    commands = [f[:-3] for f in os.listdir(bin_path) if f.endswith('.py')]
+    print("Available commands:")
+    for command in commands:
+        print(command)
 
-# add 'def main():' and 'if __name__ == "__main__":'
+def main(args):
+    help()
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
