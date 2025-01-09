@@ -11,6 +11,9 @@ def get_input():
             ch = sys.stdin.read(1)
             if ch == '\x13':  # Ctrl+S
                 break
+            if ch == '\x1b':  # Start of an escape sequence
+                seq = sys.stdin.read(2)
+                ch += seq
             yield ch
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
@@ -25,12 +28,23 @@ def edit(file_path):
     print("Type your text below. Press 'Ctrl+S' to save and exit.")
     
     buffer = []
+    cursor_x, cursor_y = 0, 0
     for ch in get_input():
         if ch == '\n':
-            buffer.append(''.join(buffer) + '\n')
-            buffer = []
+            buffer.append('\n')
+            cursor_y += 1
+            cursor_x = 0
+        elif ch == '\x1b[A':  # Up arrow
+            cursor_y = max(0, cursor_y - 1)
+        elif ch == '\x1b[B':  # Down arrow
+            cursor_y = min(len(buffer) - 1, cursor_y + 1)
+        elif ch == '\x1b[C':  # Right arrow
+            cursor_x = min(len(buffer[cursor_y]) - 1, cursor_x + 1)
+        elif ch == '\x1b[D':  # Left arrow
+            cursor_x = max(0, cursor_x - 1)
         else:
             buffer.append(ch)
+            cursor_x += 1
         sys.stdout.write(ch)
         sys.stdout.flush()
 
