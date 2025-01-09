@@ -35,7 +35,8 @@ def edit(file_path):
         sys.stdout.flush()
 
     with open(file_path, 'w') as file:
-        file.writelines(lines + buffer)
+        file.truncate(0)  # Clear the file's existing bytes
+        file.writelines(buffer)
 
 def main(args):
     if len(args) != 1:
